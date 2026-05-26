@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MES - Gaming Dashboard Infrastructure</title>
+    <title>MES - Mesopotamia Esports System</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- بەشی یەکەم: شێواز و ڕەنگەکانی سیستەم (CSS) --- */
+        /* ==========================================
+           🎨 بەشی یەکەم: دیزاین و ڕەنگەکانی سیستەم (CSS)
+           ========================================== */
         * {
             margin: 0;
             padding: 0;
@@ -16,7 +18,7 @@
         }
 
         body {
-            background-color: #0B0C10;
+            background-color: #0B0C10; /* ڕەشی مات */
             color: #E2E8F0;
             display: flex;
             flex-direction: column;
@@ -24,40 +26,35 @@
             padding-bottom: 40px;
         }
 
-        /* سەرەتا و لۆگۆ */
+        /* بەشی سەرەوە و ڕێکخستنی لۆگۆ */
         .main-header {
             text-align: center;
             padding: 30px 20px 15px 20px;
             background: linear-gradient(180deg, #12161A 0%, #0B0C10 100%);
         }
 
-        .logo-placeholder {
-            font-size: 3rem;
-            margin-bottom: 5px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .site-logo {
+            width: 140px; /* قەبارەی گونجاو بۆ لۆگۆکە لەسەر مۆبایل و کۆمپیوتەر */
+            height: auto;
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
         .main-header h1 {
-            color: #D4AF37;
+            color: #D4AF37; /* زێڕینی شاهانە */
             font-size: 2rem;
             letter-spacing: 2px;
             margin-bottom: 5px;
         }
 
         .main-header .subtitle {
-            color: #00F0FF;
+            color: #00F0FF; /* شینی نیۆن */
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* دوگمەکانی هاتوچۆ (Navigation Tabs) */
+        /* دوگمەکانی هاتوچۆ لە نێوان بەشەکان (Navigation Tabs) */
         .tabs-nav {
             display: flex;
             justify-content: center;
@@ -66,7 +63,12 @@
             max-width: 1000px;
             width: 100%;
             padding: 0 20px;
-            overflow-x: auto;
+            overflow-x: auto; /* بۆ ئەوەی لەسەر مۆبایل بە لادا بڕوات و نەشێوێت */
+            scrollbar-width: none;
+        }
+
+        .tabs-nav::-webkit-scrollbar {
+            display: none;
         }
 
         .tab-btn {
@@ -80,9 +82,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .tab-btn:hover {
@@ -97,7 +96,7 @@
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
         }
 
-        /* بەشەکانی ناوەڕۆک (Tab Contents) */
+        /* بەشەکانی ناوەڕۆک */
         .container {
             max-width: 1000px;
             width: 100%;
@@ -107,7 +106,7 @@
         }
 
         .tab-panel {
-            display: none; /* شاردنەوەی سەرەتایی بەشەکان */
+            display: none; /* شاردنەوەی بەشەکان بە شێوازی سەرەتایی */
             background-color: #12161A;
             border: 1px solid #232931;
             border-radius: 12px;
@@ -116,7 +115,7 @@
         }
 
         .tab-panel.active {
-            display: block; /* تەنها بەشی چالاک پیشان دەدرێت */
+            display: block; /* تەنها ئەو بەشەی کلیکی لێکراوە پیشان دەدرێت */
         }
 
         .panel-title {
@@ -257,22 +256,23 @@
             background-color: #E5A93C;
         }
 
+        /* گونجاندن بۆ وێبگەڕی مۆبایل */
         @media (max-width: 768px) {
             .fixture-card { flex-direction: column; text-align: center; }
             .match-team { width: 100%; }
             .match-team.left { text-align: center; }
             .match-team.right { text-align: center; }
+            .main-header h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
     <header class="main-header">
-        <header class="main-header">
-    <img src="logo.png" alt="MES Logo" class="site-logo">
-    <h1>MESOPOTAMIA ESPORTS SYSTEM</h1>
-    <p class="subtitle">Live Infrastructure Prototype</p>
-</header>
+        <img src="logo.png" alt="MES Logo" class="site-logo">
+        <h1>MESOPOTAMIA ESPORTS SYSTEM</h1>
+        <p class="subtitle">Live Infrastructure Prototype</p>
+    </header>
 
     <nav class="tabs-nav">
         <button class="tab-btn active" onclick="openTab('teams')">🛡️ Team Standings</button>
@@ -430,7 +430,7 @@
                 </div>
                 <div class="form-group">
                     <label>Discord Tag / WhatsApp Number</label>
-                    <input type="text" class="form-control" placeholder="e.g., #1234 or +964..." required>
+                    <input type="text" class="form-control" placeholder="e.g., +964..." required>
                 </div>
                 <button type="submit" class="submit-btn">Submit Registration</button>
             </form>
@@ -440,15 +440,15 @@
 
     <script>
         function openTab(tabId) {
-            // شاردنەوەی هەموو پانێڵەکان
+            // شاردنەوەی هەموو بەشەکان لە سەرەتادا
             const panels = document.querySelectorAll('.tab-panel');
             panels.forEach(panel => panel.classList.remove('active'));
 
-            // ناچالاککردنی هەموو دوگمەکان
+            // لادانی دۆخی چالاک لەسەر هەموو دوگمەکان
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // پیشاندانی پانێڵی مەبەست و چالاککردنی دوگمەکەی
+            // پیشاندانی ئەو بەشەی کلیکی لێکراوە و چالاککردنی دوگمەکەی
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
         }
